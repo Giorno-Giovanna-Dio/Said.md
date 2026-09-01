@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Said.md</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <header>
+      <p class="kicker">SAID.MD</p>
+      <h1>Turn this video into a file</h1>
+    </header>
+
+    <p id="status" class="status">Focus a YouTube watch page, then press Connect.</p>
+
+    <button id="connect" type="button">Connect current video</button>
+
+    <section id="connected" class="connected hidden">
+      <a id="thumb-link" target="_blank" rel="noreferrer">
+        <img id="thumb" alt="Video thumbnail" referrerpolicy="no-referrer" />
+      </a>
+      <div class="connected-meta">
+        <p id="video-title">Untitled video</p>
+        <p id="video-url"></p>
+      </div>
+    </section>
+
+    <form id="form">
+      <div class="input-row">
+        <input
+          id="url"
+          type="text"
+          placeholder="https://www.youtube.com/watch?v=…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="clear" type="button" class="clear hidden" aria-label="Clear link">
+          Clear
+        </button>
+      </div>
+      <button id="submit" type="button">Convert to Markdown</button>
+    </form>
+
+    <div id="actions" class="actions hidden">
+      <button id="copy" type="button">Copy</button>
+      <button id="download" type="button" class="primary">Download .md</button>
+    </div>
+
+    <pre id="preview" class="hidden"></pre>
+
+    <script src="config.js"></script>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>
