@@ -1,5 +1,4 @@
 import { BG, GOOG_API_KEY, buildURL, type WebPoSignalOutput } from "bgutils-js";
-import { JSDOM } from "jsdom";
 
 const REQUEST_KEY = "O43z0dpjhgX20SCx4KAo";
 const MINTER_TTL_MS = 30 * 60 * 1000;
@@ -17,8 +16,9 @@ let cached:
 
 let domReady = false;
 
-function ensureDom() {
+async function ensureDom() {
   if (domReady) return;
+  const { JSDOM } = await import("jsdom");
   const dom = new JSDOM("<!DOCTYPE html><html><body></body></html>", {
     url: "https://www.youtube.com/",
   });
@@ -32,7 +32,7 @@ function ensureDom() {
 }
 
 async function createMinter(visitorData: string): Promise<Minter> {
-  ensureDom();
+  await ensureDom();
   const bgConfig = {
     fetch: (input: string | URL | Request, init?: RequestInit) =>
       fetch(input, init),
